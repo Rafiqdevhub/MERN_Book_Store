@@ -1,14 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/database.js";
+import booksRoute from "./route/booksRoute.js";
 
 const app = express();
 dotenv.config();
 const port = 5000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
+
+app.use("/api/books", booksRoute);
 
 app.listen(port, () => {
   connectDB();
