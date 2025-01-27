@@ -4,6 +4,8 @@ import { api } from "../constant/api";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { MdOutlineAddBox } from "react-icons/md";
+import BookTable from "../components/BookTable";
+import BookCard from "../components/BookCard";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -15,7 +17,7 @@ const Home = () => {
       setLoading(true);
       try {
         const res = await axios.get(`${api}`);
-        setBooks(res.data);
+        setBooks(res.data.data || []);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -47,6 +49,13 @@ const Home = () => {
           <MdOutlineAddBox className="text-sky-800 text-4x1" />
         </Link>
       </div>
+      {loading ? (
+        <Spinner />
+      ) : showType === "table" ? (
+        <BookTable books={books} />
+      ) : (
+        <BookCard books={books} />
+      )}
     </div>
   );
 };
