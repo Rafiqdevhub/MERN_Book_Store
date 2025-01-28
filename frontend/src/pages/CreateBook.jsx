@@ -28,7 +28,7 @@ const CreateBook = () => {
       navigate("/");
     } catch (err) {
       console.error(err);
-      enqueueSnackbar("Error", { variant: "error" });
+      enqueueSnackbar("All field are required.", { variant: "error" });
     } finally {
       setLoading(false);
     }
