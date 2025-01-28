@@ -32,7 +32,7 @@ const ShowBook = () => {
       <h1 className="text-3xl my-4">Show Book</h1>
       {loading ? (
         <Spinner />
-      ) : (
+      ) : book ? (
         <div className="flex flex-col border-2 border-sky-400 rounded-x1 w-fit p-4">
           <div className="my-4">
             <span className="text-x1 mr-4 text-gray-500">Id</span>
@@ -59,6 +59,8 @@ const ShowBook = () => {
             <span>{new Date(book.updatedAt).toString()}</span>
           </div>
         </div>
+      ) : (
+        <p className="text-red-500">No book data found.</p>
       )}
     </div>
   );
