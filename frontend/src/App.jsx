@@ -1,20 +1,36 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
 import ShowBook from "./pages/ShowBook";
 import CreateBook from "./pages/CreateBook";
 import EditBook from "./pages/EditBook";
 import DeleteBook from "./pages/DeleteBook";
+
 const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/books/details/:id" element={<ShowBook />} />
-      <Route path="/books/create" element={<CreateBook />} />
-      <Route path="/books/edit/:id" element={<EditBook />} />
-      <Route path="/books/delete/:id" element={<DeleteBook />} />
-    </Routes>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/books/details/:id",
+      element: <ShowBook />,
+    },
+    {
+      path: "/books/create",
+      element: <CreateBook />,
+    },
+    {
+      path: "/books/edit/:id",
+      element: <EditBook />,
+    },
+    {
+      path: "/books/delete/:id",
+      element: <DeleteBook />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
