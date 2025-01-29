@@ -9,6 +9,7 @@ import BackButton from "../components/BackButton";
 const CreateBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
   const [publishYear, setPublishYear] = useState(" ");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const CreateBook = () => {
     const data = {
       title,
       author,
+      description,
       publishYear,
     };
 
@@ -55,6 +57,15 @@ const CreateBook = () => {
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full"
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-x1 mr-4 text-gray-500">Description</label>
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full"
           />
         </div>

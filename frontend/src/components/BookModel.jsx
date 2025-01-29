@@ -1,6 +1,7 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle } from "react-icons/bi";
+import { TbFileDescription } from "react-icons/tb";
 
 const BookModel = ({ book, onClose }) => {
   return (
@@ -28,8 +29,11 @@ const BookModel = ({ book, onClose }) => {
           <BiUserCircle className="text-red-300 text-2xl" />
           <h2 className="my-1">{book.author}</h2>
         </div>
-        <p className="mt-4">Book Description</p>
-        <p className="my-2">Coming Soon</p>
+        <div className="flex justify-start items-center gap-x-2">
+          <TbFileDescription className="text-red-300 text-2xl" />
+          <h2 className="my-1">Description:</h2>
+          <p className="my-2">{book.description}</p>
+        </div>
       </div>
     </div>
   );

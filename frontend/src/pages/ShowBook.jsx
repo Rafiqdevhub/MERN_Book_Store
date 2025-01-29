@@ -16,9 +16,8 @@ const ShowBook = () => {
       try {
         const response = await axios.get(`${api}/${id}`);
         setBook(response.data);
-        console.log(response.data);
       } catch (error) {
-        console.error(error);
+        throw new error();
       } finally {
         setLoading(false);
       }
@@ -29,7 +28,7 @@ const ShowBook = () => {
   return (
     <div className="p-4">
       <BackButton />
-      <h1 className="text-3xl my-4">Show Book</h1>
+      <h1 className="text-3xl my-4"> Book Details</h1>
       {loading ? (
         <Spinner />
       ) : book ? (
@@ -41,6 +40,10 @@ const ShowBook = () => {
           <div className="my-4">
             <span className="text-x1 mr-4 text-gray-500">Author:</span>
             <span> {book.author}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-x1 mr-4 text-gray-500">Description:</span>
+            <span> {book.description}</span>
           </div>
           <div className="my-4">
             <span className="text-x1 mr-4 text-gray-500">Publish Year:</span>
