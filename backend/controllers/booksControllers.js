@@ -70,7 +70,7 @@ const updateBook = async (req, res) => {
       return res
         .status(400)
         .send(
-          "At least one of 'title', 'author', or 'publishYear' is required."
+          "At least one of 'title', 'author', 'description' or 'publishYear' is required."
         );
     }
 
