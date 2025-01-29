@@ -2,7 +2,12 @@ import Book from "../model/bookModel.js";
 
 const createBook = async (req, res) => {
   try {
-    if (!req.body.title || !req.body.author || !req.body.publishYear) {
+    if (
+      !req.body.title ||
+      !req.body.author ||
+      !req.body.description ||
+      !req.body.publishYear
+    ) {
       return res.status(400).send({ message: "All fields are required." });
     }
     const existingBook = await Book.findOne({ title: req.body.title });
@@ -15,6 +20,7 @@ const createBook = async (req, res) => {
     const newBook = {
       title: req.body.title,
       author: req.body.author,
+      description: req.body.description,
       publishYear: req.body.publishYear,
     };
 
@@ -55,7 +61,12 @@ const getBookById = async (req, res) => {
 const updateBook = async (req, res) => {
   try {
     const id = req.params.id;
-    if (!req.body.title && !req.body.author && !req.body.publishYear) {
+    if (
+      !req.body.title &&
+      !req.body.author &&
+      !req.body.description &&
+      !req.body.publishYear
+    ) {
       return res
         .status(400)
         .send(
@@ -66,6 +77,7 @@ const updateBook = async (req, res) => {
     const updateData = {};
     if (req.body.title) updateData.title = req.body.title;
     if (req.body.author) updateData.author = req.body.author;
+    if (req.body.description) updateData.description = req.body.description;
     if (req.body.publishYear) updateData.publishYear = req.body.publishYear;
 
     const result = await Book.findByIdAndUpdate(id, updateData, { new: true });
