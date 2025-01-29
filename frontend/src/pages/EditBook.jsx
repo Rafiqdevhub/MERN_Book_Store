@@ -26,9 +26,9 @@ const EditBook = () => {
         setDescription(res.data.description);
         setPublishYear(res.data.publishYear);
       } catch (err) {
-        console.log(err);
         enqueueSnackbar("Error Retrieving Book", { variant: "error" });
         alert("error");
+        throw new Error(err.message);
       } finally {
         setLoading(false);
       }

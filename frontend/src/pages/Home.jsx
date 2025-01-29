@@ -20,7 +20,8 @@ const Home = () => {
         setBooks(res.data.data || []);
         setLoading(false);
       } catch (err) {
-        console.error(err);
+        throw new Error(err.message);
+      } finally {
         setLoading(false);
       }
     };

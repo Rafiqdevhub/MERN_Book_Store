@@ -20,7 +20,7 @@ const DeleteBook = () => {
       navigate("/");
     } catch (err) {
       enqueueSnackbar("Error", { variant: "error" });
-      console.log(err);
+      throw new Error(err.message);
     } finally {
       setLoading(false);
     }
