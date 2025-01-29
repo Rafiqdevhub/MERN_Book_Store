@@ -19,7 +19,7 @@ const EditBook = () => {
     const fetchBook = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${api}/get-book/${id}`);
+        const res = await axios.get(`${api}/${id}`);
         setTitle(res.data.title);
         setAuthor(res.data.author);
         setPublishYear(res.data.publishYear);

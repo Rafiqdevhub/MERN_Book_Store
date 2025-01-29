@@ -14,7 +14,7 @@ const ShowBook = () => {
     const fetchBook = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${api}/get-book/${id}`);
+        const response = await axios.get(`${api}/${id}`);
         setBook(response.data);
         console.log(response.data);
       } catch (error) {
