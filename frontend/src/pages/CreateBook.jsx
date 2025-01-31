@@ -29,8 +29,8 @@ const CreateBook = () => {
       enqueueSnackbar("Book created successfully", { variant: "success" });
       navigate("/");
     } catch (err) {
-      console.error(err);
       enqueueSnackbar("All field are required.", { variant: "error" });
+      throw err;
     } finally {
       setLoading(false);
     }
