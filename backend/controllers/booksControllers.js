@@ -29,7 +29,6 @@ const createBook = async (req, res) => {
       .status(201)
       .send({ message: "Book created successfully.", book });
   } catch (error) {
-    console.error(error);
     res
       .status(500)
       .send({ message: "An error occurred.", error: error.message });
@@ -88,7 +87,6 @@ const updateBook = async (req, res) => {
       .status(200)
       .send({ message: "Book updated successfully", book: result });
   } catch (error) {
-    console.error(error);
     return res.status(500).send({ message: error.message });
   }
 };
@@ -102,7 +100,6 @@ const deleteBook = async (req, res) => {
     }
     return res.status(200).send({ message: "Book deleted successfully" });
   } catch (error) {
-    console.log(error.message);
     return res.status(500).send({ message: error.message });
   }
 };
