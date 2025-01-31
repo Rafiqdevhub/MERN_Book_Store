@@ -18,6 +18,13 @@ app.use(cors(corsOptions));
 
 app.use("/api/books", booksRoute);
 
+// Not Found
+app.get("*", (req, res) => {
+  res.status(404).json({
+    message: "Not Found",
+  });
+});
+
 app.listen(port, () => {
   connectDB();
   console.log(`Server is running on http://localhost:${port}`);
